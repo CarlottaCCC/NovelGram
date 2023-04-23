@@ -37,7 +37,14 @@
             $result = pg_query_params($dbconn, $q2, array($username,$email,$password));
 
             if ($line = pg_fetch_array($result)) {
-                echo "Benvenuto!!!";
+
+                session_start();
+                $_SESSION["username"] = $username;
+                $_SESSION["email"] = $email;
+
+                echo "Benvenuto ".$username."!!! Accedi al tuo
+                <a href = ../profilo/paginaprofilo.php>profilo!</a>";
+                
             }
 
             else {

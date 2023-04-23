@@ -43,8 +43,13 @@ else {
     $query2 = "insert into utente values ($1,$2,$3)";
     $data = pg_query_params($dbconn, $query2, array($username,$email,$pswd));
     if ($data) {
-        echo "La registrazione è andata a buon fine! <br>
-        Clicca <a href=../login/login.html>qui</a> per fare login!";
+        session_start();
+
+        $_SESSION["username"] = $username;
+        $_SESSION["email"] = $email;
+
+        echo "Benvenuto ".$username."!!! Accedi al tuo
+        <a href = ../profilo/paginaprofilo.php>profilo!</a>";
     }
     else {
         "La registrazione non è andata a buon fine. Prova di nuovo!";

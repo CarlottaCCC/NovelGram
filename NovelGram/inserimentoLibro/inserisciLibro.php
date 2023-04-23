@@ -18,13 +18,20 @@
 
      if ($dbconn) {
 
-        echo $_POST["inputFile"];
+        session_start();
 
         $titolo = $_POST["inputTitolo"];
         $testo = file_get_contents($_POST["inputFile"]);
+        $like = 0;
+        $trama = $_POST["inputTrama"];
+
+        if (isset($_SESSION["email"])){
+        $email = $_SESSION["email"];
+        }
+       
         
-        $query2 = "insert into libro values ($1,$2)";
-        $result = pg_query_params($dbconn, $query2, array($titolo,$testo));
+        $query2 = "insert into libro values ($1,$2,$3,$4,$5)";
+        $result = pg_query_params($dbconn, $query2, array($titolo,$testo,$like,$trama,$email));
         if ($result) {
             echo "Il tuo libro è stato inserito correttamente nel database!";
         }
