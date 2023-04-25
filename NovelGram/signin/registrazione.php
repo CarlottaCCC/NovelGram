@@ -52,7 +52,7 @@ else {
         <a href = ../profilo/paginaprofilo.php>profilo!</a>";
     }
     else {
-        "La registrazione non è andata a buon fine. Prova di nuovo!";
+        echo  "<a href = ../home.php> La registrazione non è andata a buon fine. Clicca per provare di nuovo! </a>";
     }
 
 }

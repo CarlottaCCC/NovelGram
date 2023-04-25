@@ -4,30 +4,98 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina signin</title>
+    <title>Pagina Registrazione</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script  source="../jquery-3.6.4.min.js" type="text/javascript"  language="text/javascript">
+      function a() {
+        window.alert("TEST");
+      }
+
+      function ValidaPassword() {
+        if (document.getElementById("inputPassword").value.length >= 30) {
+          window.alert("Password Troppo Lunga!");
+          return false;
+
+        }
+      const pass = /^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*()\-__+.]){1,}).{6,}$/;
+      if(  (pass.test( (document.getElementById("inputPassword")).value ) )  == false ) {
+        window.alert("Inserire Una Password più sicura [ALMENO UNA MAIUSCOLA,UN NUMERO E UN CARATTERE SPECIALE,ED ALMENO 6 CARATTERI]");
+        return false;
+  
+      }
+      return true;
+      }
+      
+      
+
+      function ValidaEmail() {
+        if (document.getElementById("inputEmail").value.length >= 30) {
+          window.alert("Email Troppo Lunga!");
+          return false;
+
+        }
+      const eemailpattern = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+      if(  (eemailpattern.test( (document.getElementById("inputEmail")).value ) )  == false ) {
+        window.alert("Inserire Una Mail Valida");
+        return false;
+  
+      }
+      return true;
+      }
+
+      function ValidaRegistrazione() {
+      a1 = ValidaPassword();
+      a2 = ValidaEmail();
+      if ((a1 == false) || (a2 == false)) {
+        return false;
+      }
+      return true;
+
+
+      }
+
+
+      </script>
+      <!-- ^(?=(.*[a-z]){1,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*()\-__+.]){1,}).{6,}$    
+
+
+        Spiegazione per la password
+      ^                               inizio
+(?=(.*[a-z]){1,})               minuscole {1,} almeno una
+(?=(.*[A-Z]){1,})               maiuscole {1,} almeno una
+(?=(.*[0-9]){1,})               numero  {1,} almeno uno
+(?=(.*[!@#$%^&*()\-__+.]){1,})  Caratteri speciali almeno 1
+{6,}                            almeno 6
+$                               fine
+      
+      
+      
+      
+      
+      -->
 </head>
 <body>
     <a href="../home.php">Torna alla Home</a>
    
 
-    <form class="form-signin" name="myForm" action="registrazione.php" method="POST">
+    <form class="form-signin" name="myForm" onSubmit="return ValidaRegistrazione();" action="registrazione.php" method="POST">
         <h1 class="h3 mb-3 font-weight-normal">Sing Up</h1>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" id="inputEmail" class="form-control" placeholder="Indirizzo e-mail" name="inputEmail"
-        class="form-control" required autofocus>
+        class="form-control"  required autofocus>
         <label for="inputUserName" class="sr-only">UserName</label>
         <input type="text" id="inputUserName" placeholder="username" name="inputUserName" class="form-control" required>
     
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="inputPassword"
-        class="form-control" required>
+        class="form-control"  required>
         <div class="checkbox mb-3">
           <label>
-            <input type="checkbox" value="remember-me"> Remember me
+            <input type="checkbox" onchange="a()" value="remember-me"> Remember me
           </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Registrati!</button>
-    
+        <button class="btn btn-lg btn-primary btn-block" type="submit" >Registrati!</button>
+
+        
 </body>
 </html>
