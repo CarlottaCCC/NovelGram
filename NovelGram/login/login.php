@@ -16,6 +16,7 @@
      if ($dbconn) {
         $email = $_POST['inputEmail'];
         $username = $_POST['inputUserName'];
+        $hash = password_hash($_POST['inputPassword'], PASSWORD_DEFAULT);
         $password = $_POST['inputPassword'];
 
         
@@ -33,10 +34,10 @@
         }
 
         else {
-            $q2 = "select * from utente where username = $1 and email = $2 and pswd = $3";
-            $result = pg_query_params($dbconn, $q2, array($username,$email,$password));
+            /* $q2 = "select * from utente where username = $1 and email = $2 and pswd = $3";
+            $result = pg_query_params($dbconn, $q2, array($username,$email,$password)); */
 
-            if ($line = pg_fetch_array($result)) {
+            if (password_verify($password,$hash)) {
 
                 session_start();
                 $_SESSION["username"] = $username;

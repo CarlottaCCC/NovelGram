@@ -66,22 +66,20 @@
 
         $result = pg_query_params($dbconn,$query,array($mail,$user));
 
-        while ($line = pg_fetch_array($result)) : ?>
+        while ($line = pg_fetch_array($result)) : 
+          $titolo = $line["titolo"];?>
               
 
 
           <div class="card-body">
-                <p class="card-text"><?php echo $line["titolo"]; ?></p>
+                <p class="card-text"><?php echo "<a href='../Librogenerico/libro.php?titolo=$titolo'>".$titolo."</a>"; ?></p>
                 <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Elimina</button>
+                <form class="btn-group">
+                <?php echo "<a href='EliminaStoria/EliminaStoria.php?titolo=$titolo' style = 'color:#ff0606'>Elimina</a>"; ?>
+                <?php echo "<a href='modifica/ModificaStoria.php?titolo=$titolo'>Modifica</a>"; ?>
+                    <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Modifica</button> -->
                   </div>
-                  
-                  <small class="text-muted">9 mins</small>
-                </div>
-              </div>
-            </div>
+                
           </div>
           <div class="col">
             <div class="card shadow-sm">
@@ -94,7 +92,27 @@
         <?php 
          endwhile; 
          pg_close($dbconn); 
-
-        endif;
          ?>
+
+        </br>
+        </br>
+        </br>
+
+        <a href = "Disconnetti.php">Disconnetti profilo</a>
+
+        </br>
+        </br>
+        </br>
+
+
+
+        <a href = "EliminaProfilo.html" style = "color:#ff0606">Elimina Profilo</a>
+
+         <?php endif; ?>
+
+
+        
+
+      </body>
+      </html>
 

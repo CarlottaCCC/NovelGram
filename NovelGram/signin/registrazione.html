@@ -73,13 +73,17 @@ $                               fine
       
       
       -->
+<!-- style = "display: grid;
+    justify-content: center;
+    justify-items: center; font-size: 10px; height: 1000px; width: 1000px; " giostra su queste cose i primi 3 sono ok, usa analizza comodo -->
+
+
 </head>
 <body>
     <a href="../home.php">Torna alla Home</a>
    
-
-    <form class="form-signin" name="myForm" onSubmit="return ValidaRegistrazione();" action="registrazione.php" method="POST">
-        <h1 class="h3 mb-3 font-weight-normal">Sing Up</h1>
+    <form class="form-signin" name="myForm" onSubmit="return ValidaRegistrazione();" action="registrazione.php" method="POST"  >
+        <h1 class="h3 mb-3 font-weight-normal" >Sing Up</h1>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" id="inputEmail" class="form-control" placeholder="Indirizzo e-mail" name="inputEmail"
         class="form-control"  required autofocus>
@@ -95,6 +99,9 @@ $                               fine
           </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit" >Registrati!</button>
+    </form>
+
+     
 
         
 </body>

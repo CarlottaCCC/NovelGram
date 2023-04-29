@@ -17,7 +17,7 @@ or die('Errore di connessione: ' . pg_last_error());
 if ($dbconn) {
 $email = $_POST['inputEmail'];
 $username = $_POST['inputUserName'];
-$pswd = $_POST['inputPassword'];
+$pswd = password_hash($_POST['inputPassword'], PASSWORD_DEFAULT);
 
 $q1 = "select * from utente where username = $1 and email != $2";
 $result = pg_query_params($dbconn, $q1, array($username,$email));

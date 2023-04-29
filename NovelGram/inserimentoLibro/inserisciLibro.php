@@ -21,9 +21,24 @@
         session_start();
 
         $titolo = $_POST["inputTitolo"];
-        $testo = file_get_contents($_POST["inputFile"]);
+        /*$testo = file_get_contents($_POST["inputFile"]);*/
         $like = 0;
         $trama = $_POST["inputTrama"];
+
+        $handler = fopen($_POST["inputFile"], "r");
+        
+        if (false !== $handler) {
+            while (false !== ($buffer = fgets($handler, 1000))) {
+                
+                $testo = $testo.$buffer."<br>";
+            }
+            if (!feof($handler)) {
+                echo "Errore nella lettura tramite fgets()\n";
+            }
+            fclose($handler);
+        }
+           
+        
 
         if (isset($_SESSION["email"])){
         $email = $_SESSION["email"];
