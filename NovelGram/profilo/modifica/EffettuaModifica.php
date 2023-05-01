@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inserimento libro nella bdd</title>
+    <title>Modifica libro nella bdd</title>
 
 
 </head>
 <body>
-
+<!-- PROBLEMA ---- quando modifico il testo si cancella tutto.RISOLUZIONE, ELIMINARE STORIA E SOSTITUIRLA CON NUOVO FILE!-->
 <?php
 
     $dbconn = pg_connect("host=localhost user=username password=password 
@@ -20,10 +20,8 @@
 
         session_start();
 
-        $titolo = $_POST["inputTitolo"];
+        $titolo = $_GET["titolo"];
         /*$testo = file_get_contents($_POST["inputFile"]);*/
-        $like = 0;
-        $trama = $_POST["inputTrama"];
 
         $handler = fopen($_POST["inputFile"], "r");
         
@@ -45,13 +43,13 @@
         }
        
         
-        $query2 = "insert into libro values ($1,$2,$3,$4,$5)";
-        $result = pg_query_params($dbconn, $query2, array($titolo,$testo,$like,$trama,$email));
+        $query2 = "update libro set testo = $2 where titolo = $1";
+        $result = pg_query_params($dbconn, $query2, array($titolo,$testo));
         if ($result) {
-            echo "Il tuo libro è stato inserito correttamente nel database! <a href='../home.php'>Torna alla Home</a>";
+            echo "Il tuo libro è stato Modificato correttamente nel database! <a href='../paginaprofilo.php'>Torna al Profilo</a>";
         }
         else {
-            "Qualcosa è andato storto";
+            echo "Qualcosa è andato storto <a href='../../home.php'>Torna alla Home</a>";
         }
 
         pg_close($dbconn);

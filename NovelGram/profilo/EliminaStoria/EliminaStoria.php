@@ -10,6 +10,11 @@
 
 <?php
 
+
+
+
+
+
 if (!isset($_GET['titolo'])){
     header('location: home.php');
 }

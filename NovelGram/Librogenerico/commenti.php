@@ -26,11 +26,13 @@
     where com.titolo = $1";
     $result = pg_query_params($dbconn, $query, array($_GET['titolo']));
 
-    if (($line = pg_fetch_array($result))) {
-
+    while ($line = pg_fetch_array($result)) {
+    
         echo $line['username'];
         echo "<br>";
         echo $line['testocomm'];
+        echo "<br>";
+        echo "<br>";
     }
 
 

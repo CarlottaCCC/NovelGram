@@ -17,16 +17,17 @@ $dbconn = pg_connect("host=localhost user=username password=password
         or die('Errore di connessione: ' . pg_last_error());
 
         $query = "delete from utente where email = $1";
-        $result = pg_query_params($dbconn,$query,array($_SESSION["email"]));
+        $result = pg_query_params($dbconn,$query,array($_GET["email"]));
 
         if ($result) {
+            session_unset();
             echo "Eliminazione avvenuta con successo."."<br>"."Torna alla
-            <a href=../home.php>Home</a>";
+            <a href='../../home.php'>Home</a>";
         }
 
             else {
                 echo "Ops... qualcosa è andato storto"."<br>"."Torna al tuo
-                <a href=paginaprofilo.php>profilo</a>";
+                <a href=../paginaprofilo.php>profilo</a>";
             }
 
 

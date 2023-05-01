@@ -12,6 +12,8 @@
 
     <!-- <div class="card"> -->
         <a href="/profilo/paginaprofilo.php">Vai al tuo profilo</a>
+        <a href="/login/login.html">Accedi!</a>
+        <a href="/signin/registrazione.html">Non hai un account? Iscriviti!</a>
         <br/>
         <form class="cercaAutore" method = "POST" action = "ricerca/ricercaAutore.php">
             <input type="text" class="search_autore" placeholder="Cerca Autore" name = "InputAutore">
@@ -90,15 +92,8 @@
        pg_close($dbconn); 
        ?>
 
-        <br/>
-        <br/>
-        <br/>
-        <a href="/login/login.html">Accedi!</a>
-        <br/>
-        <br/>
-        <br/>
-        <a href="/signin/registrazione.html">Non hai un account? Iscriviti!</a>
-
+       
+        
     <!-- </div> -->
 
 

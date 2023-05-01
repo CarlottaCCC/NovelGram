@@ -48,11 +48,8 @@
                 <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                     <button type="button" class="btn btn-sm btn-outline-secondary">Leggi</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Elimina</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Modifica</button>
                   </div>
                   
-                  <small class="text-muted">9 mins</small>
                 </div>
               </div>
             </div>

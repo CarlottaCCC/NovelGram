@@ -26,29 +26,35 @@
 
     $query = "select * from libro where titolo = $1";
     $result = pg_query_params($dbconn, $query, array($_GET['titolo']));
+   
+    
     if (($line = pg_fetch_array($result))) {
 
         echo $line['testo'];
+        $titolo = $line["titolo"];
     }
+
     ?>
 
     <br>
     <br>
     <br>
 
-    <?php session_start();
-    if (isset($_SESSION["username"])) :
-    ?>
+   
 
-    <form method="POST" action="commenti.php">
-    <button type="button" class="btn btn-sm btn-outline-secondary">Commenta!</button>
-    </form>
+   
+    <?php echo "<form name='myForm' action='scriviCommento.php?titolo=$titolo' method='POST'> 
+        <h1>Inserisci il tuo commento!</h1>
+        <div class='form-group'>
+            <label for='inputCommento'>Commento</label>
+            <input type='text' class='form-control' name='inputCommento' id='inputCommento' placeholder='Scrivere un commento'>
+          </div>
+        <button type='submit' class='btn btn-primary'>Invia!</button>
+      </form>
+      "?>
 
-    <?php endif; ?>
 
-    <form method="POST" action="commenti.php">
-    <button type="button" class="btn btn-sm btn-outline-secondary">Visualizza i commenti</button>
-    </form>
+  <?php echo  "<a href='commenti.php?titolo=$titolo'>Visualizza i commenti qui </a> ";?>
 
 
 
