@@ -25,5 +25,48 @@
 }
 */
 
+.head-banner {
+  background-color: #848484;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  background-image: url('https://wallpaperaccess.com/full/1884745.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.sezione-icone {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+
+}
+
+h3 {
+  color: black;
+}
+
+.load.mb-0 {
+  color: #848484;
+}
+
+.bi{
+  font-size: 100px;
+  color: black;
+  
+}
+.card {
+  justify-content: center;
+  display: grid;
+  justify-items: center;
+}
+
+
+
+@media screen and (min-width: 768px){
+  .head-banner{
+      padding-top: 12rem;
+      padding-bottom: 12rem;
+  }
+}
+
 
 

@@ -12,7 +12,7 @@
 
 
 
-
+session_start();
 
 
 if (!isset($_GET['titolo'])){
@@ -29,6 +29,7 @@ else if (isset($_GET['titolo'])){
     if ($result) {
         echo "Eliminazione della storia ".$_GET['titolo']." avvenuta con successo <br> Torna al tuo 
         <a href=../paginaprofilo.php>profilo</a>";
+        
     }
 
     else {

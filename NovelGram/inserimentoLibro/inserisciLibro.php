@@ -25,7 +25,7 @@
         $like = 0;
         $trama = $_POST["inputTrama"];
 
-        $handler = fopen($_POST["inputFile"], "r");
+        $handler = fopen($_POST["inputFile"], "r") or die("Unable to open file!");
         
         if (false !== $handler) {
             while (false !== ($buffer = fgets($handler, 1000))) {

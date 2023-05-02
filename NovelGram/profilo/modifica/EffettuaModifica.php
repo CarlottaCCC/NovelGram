@@ -23,8 +23,10 @@
         $titolo = $_GET["titolo"];
         /*$testo = file_get_contents($_POST["inputFile"]);*/
 
-        $handler = fopen($_POST["inputFile"], "r");
+
+        $handler = fopen($_POST['inputFile'], "r");
         
+     
         if (false !== $handler) {
             while (false !== ($buffer = fgets($handler, 1000))) {
                 
@@ -35,6 +37,9 @@
             }
             fclose($handler);
         }
+        
+
+
            
         
 
@@ -54,6 +59,8 @@
 
         pg_close($dbconn);
      }
+       
+     
 
 
 

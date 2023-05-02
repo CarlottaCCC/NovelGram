@@ -44,7 +44,7 @@ $titolo = $_GET['titolo'];
         $query2 = "insert into commento values ($1,$2,$3)";
         $result = pg_query_params($dbconn, $query2, array($email,$titolo,$commento));
         if ($result) {
-            echo "Il tuo libro è stato inserito correttamente nel database! <a href='../home.php'>Torna alla Home</a>";
+            echo "Il tuo commento è stato inserito correttamente nel database! <a href='../home.php'>Torna alla Home</a>";
         }
         else {
             echo "Qualcosa è andato storto!!! <a href='../home.php'>Torna alla Home</a>";

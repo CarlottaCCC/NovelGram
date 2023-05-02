@@ -12,6 +12,8 @@
 
     <?php
 
+    session_start();
+
     if (!isset($_GET['titolo'])){
         header('location: home.php');
     }
@@ -41,22 +43,24 @@
     <br>
 
    
+    <?php
 
+if (isset($_SESSION['email'])) {
    
-    <?php echo "<form name='myForm' action='scriviCommento.php?titolo=$titolo' method='POST'> 
+     echo "<form name='myForm' action='scriviCommento.php?titolo=$titolo' method='POST'> 
         <h1>Inserisci il tuo commento!</h1>
         <div class='form-group'>
             <label for='inputCommento'>Commento</label>
             <input type='text' class='form-control' name='inputCommento' id='inputCommento' placeholder='Scrivere un commento'>
           </div>
         <button type='submit' class='btn btn-primary'>Invia!</button>
-      </form>
-      "?>
+      </form>";
 
 
-  <?php echo  "<a href='commenti.php?titolo=$titolo'>Visualizza i commenti qui </a> ";?>
+  echo  "<a href='commenti.php?titolo=$titolo'>Visualizza i commenti qui </a> ";
+}
 
-
+?>
 
 
 </body>

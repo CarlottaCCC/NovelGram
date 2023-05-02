@@ -1,31 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style.css">
+
     <title>Pagina Profilo</title>
-    <script>
-function areyousure(argomento) {
-        let confirmAction = confirm("Are you sure to execute this action?");
-        if (confirmAction) {
-          alert("Action successfully executed");
-          <?php echo"window.location.href='EliminaStoria/EliminaStoria.php?titolo=$argomento';";?>
-          return false;
-        } else {
-        }
-        
-      }
+  </head>
+  <body>
 
-
-</script>
-</head>
-<body style = "background-color:green">
-    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Menu</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
       
-       <a href="../home.php" style="color:black">Torna alla Home</a>
-       <br>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="../home.php">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login/login.html">Accedi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/signin/registrazione.html">Non hai un account? Registrati!</a>
+            </li>
+          </ul>
+          </div>
+      </nav>
 
        <?php
 
@@ -36,21 +43,31 @@ function areyousure(argomento) {
           <a href=../login/login.html>qui</a>";
         }
 
-        else if (isset($_SESSION["username"])):
+        else if (isset($_SESSION["username"])): ?>
 
-        ?>
+<header class = "head-banner text-white text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <h1><?php echo "Pagina profilo di ".$_SESSION["username"]; ?></h1>
+                    <h2 id="descrizione">Descrizione</p>
+                    <br>
+                    <div id="zonaDescrizione"></div>
+                </div>
+            </div>
+        </div>
+       <br>
 
-<section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light"><?php echo "Pagina Profilo di ".$_SESSION["username"]?></h1>
-        <p class="lead text-muted">Descrizione</p>
-        <p>
+       <br>
+
+       <p>
           <a href="../inserimentoLibro/inserisciLibro.html" class="btn btn-primary my-2" style="color:black">Inserisci un Libro</a>
         </p>
-      </div>
-    </div>
-  </section>
+
+       <section>
+       <h1 style = "color:#848484">Storie pubblicate</h1>
+      </section>
+
 
   <!-- <div class="album py-5 bg-light">
     <div class="container">
@@ -80,30 +97,25 @@ function areyousure(argomento) {
         $result = pg_query_params($dbconn,$query,array($mail,$user));
 
         while ($line = pg_fetch_array($result)) : 
-          $titolo = $line["titolo"];?>
+          $titolo = $line["titolo"];
+          $trama = $line["trama"];
+          ?>
               
 
 
+        <div class="card">
           <div class="card-body">
-                <p class="card-text"><?php echo "<a href='../Librogenerico/libro.php?titolo=$titolo' style = 'color:purple';font-size: '300px'>".$titolo."</a>"; ?></p>
-                <div class="d-flex justify-content-between align-items-center">
-                <form class="btn-group">
-                <?php echo "<a href='EliminaStoria/EliminaStoria.php?titolo=$titolo' style = 'color:black'>Elimina</a>"; ?>
-                <?php echo "<a href='modifica/ModificaStoria.php?titolo=$titolo' style = 'color:black'>Modifica</a>"; ?>
-                    <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Modifica</button> -->
-                  </div>
-                
-          </div>
-          <div class="col">
-            <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="75%" height="100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#55595c"></rect>
-              <text y = 10% fill="#eceeef" dy=".3em"><?php echo $line["trama"]; ?></text>
-              </svg>
+          <h5 class="card-title" style = "color:black"><?php echo $titolo; ?></h5>
+          <h6 class="card-subtitle mb-2 text-muted"><?php echo "by ".$line['username']?></h6>
+       <p class="card-text" style = "color:black"><?php echo $line['trama']?></p>
+    <?php echo "<a href='../Librogenerico/libro.php?titolo=$titolo' class='btn btn-primary'>Leggi</a>";?>
+    <?php echo "<a href='modifica/ModificaStoria.php?titolo=$titolo&trama=$trama' class='btn btn-primary'>Modifica</a>";?>
+    <?php echo "<a href='EliminaStoria/EliminaStoria.php?titolo=$titolo' class='btn btn-primary'>Elimina</a>";?>
+  </div>
+</div>
          
 
-            <!-- VA IMPLEMENTATA DISCONNESSIONE E COLLEGATA ALL'ELIMINAPROFILO, ALTRIMENTI RIMANIAMO IN UNA SESSIONE ZOMBIE ANCHE SE IL PROFILO SI È DISCONNESSO -->
+           
         <?php 
          endwhile; 
          pg_close($dbconn); 
@@ -115,16 +127,35 @@ function areyousure(argomento) {
 
         <?php echo "<a href = 'Disconnetti.php?email=$mail' style = 'color:black'>Disconnetti profilo</a>"; ?>
 
-        </br>
-        </br>
-        </br>
-
-      
-
-        <?php echo "<a href = 'EliminaProfilo/EliminaProfilo.php?email=$mail' style = 'color:black' >Elimina Profilo</a>"; ?>
-
          <?php endif; ?>
 
+         </section>
+
+  
+  
+</div>
+
+      </header>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script>
+      $(document).ready(function(){
+        $("#descrizione").click(function(){
+          $("zonaDescrizione").load()
+        })
+
+      });
+
+      </script>
+  </body>
+</html>
+
+    
 
         
 

@@ -1,10 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
     <title>Commenti</title>
 </head>
 <body>
@@ -14,7 +17,7 @@
         header('location: libro.php');
     }
 
-    else if (isset($_GET['titolo'])){
+    else if (isset($_GET['titolo'])) :
         
 
     $dbconn = pg_connect("host=localhost user=username password=password 
@@ -26,19 +29,22 @@
     where com.titolo = $1";
     $result = pg_query_params($dbconn, $query, array($_GET['titolo']));
 
-    while ($line = pg_fetch_array($result)) {
-    
-        echo $line['username'];
-        echo "<br>";
-        echo $line['testocomm'];
-        echo "<br>";
-        echo "<br>";
-    }
+    while ($line = pg_fetch_array($result)) :?>
+
+        <div class="coment-bottom bg-white p-2 px-4">
+                    <div class="d-flex flex-row add-comment-section mt-4 mb-4"><img class="img-fluid img-responsive rounded-circle mr-2" src="../icona.png" width="38"></div>
+                    <div class="commented-section mt-2">
+                        <div class="d-flex flex-row align-items-center commented-user">
+                        <h5 class="mr-2"><?php echo $line['username']; ?></h5><span class="dot mb-1"></span></div>
+                        <div class="comment-text-sm"><span><?php echo $line['testocomm']; ?></span></div>
+                    </div>
+        </div>
+
+    <?php endwhile; 
+    endif; ?>
 
 
 
-    }
 
-
-    ?>
 </body>
+</html>
