@@ -27,11 +27,19 @@ else if (isset($_GET['titolo'])){
     $query = "delete from libro where titolo=$1";
     $result = pg_query_params($dbconn, $query, array($_GET['titolo']));
     if ($result) {
+    $query = "delete from commento where titolo=$1";
+    $result = pg_query_params($dbconn, $query, array($_GET['titolo']));
+    if ($result) {
+        
         echo "Eliminazione della storia ".$_GET['titolo']." avvenuta con successo <br> Torna al tuo 
         <a href=../paginaprofilo.php>profilo</a>";
         
     }
-
+    else {
+        echo "Ops...qualcosa è andato storto<br>
+        torna al tuo <a href=../paginaprofilo.php>profilo</a>";
+    }
+    }
     else {
         echo "Ops...qualcosa è andato storto<br>
         torna al tuo <a href=../paginaprofilo.php>profilo</a>";
