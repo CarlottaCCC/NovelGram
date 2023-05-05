@@ -66,17 +66,15 @@ if (isset($_SESSION['email'])) {
 <?php echo "<button name='mipiace' value = $titolo onclick='MiPiace(this.value)'>Mi Piace!</button>"; ?>
                     <br>
                    <div id="txtHint"></div>
-
-
+                   
 
 <?php echo "<button name='mostraMiPiace' value =$titolo onclick='MostraMiPiace(this.value)'>Mostra i mi piace</button>"; ?>
     <br>
     <div id="zonaMiPiace"></div>
-    
+
 
     <?php 
 
-  echo  "<a href='commenti.php?titolo=$titolo'>Visualizza i commenti qui </a> ";
 }
 
 ?>
@@ -109,6 +107,7 @@ if (isset($_SESSION['email'])) {
   xhttp.open("GET", "mostramipiace.php?titolo="+str, true);
   xhttp.send();
     }
+
 
 </script>
 

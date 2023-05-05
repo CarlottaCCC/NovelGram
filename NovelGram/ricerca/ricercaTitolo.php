@@ -23,9 +23,9 @@ session_start();
     echo "Mh...Non abbiamo trovato niente.";
    }
    else {
-    $_SESSION["TitoloCercato"] = $line["titolo"];
+    $titolo =  $line["titolo"];
     echo "Cercavi questo?
-    <a href = ../Librogenerico/libro.php >".$line["titolo"]."</a>";
+    <a href = ../Librogenerico/libro.php?titolo=$titolo>".$line["titolo"]."</a>";
    }
 
     pg_close($dbconn); 

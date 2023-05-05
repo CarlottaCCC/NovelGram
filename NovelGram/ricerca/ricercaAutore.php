@@ -22,9 +22,9 @@
    }
    else {
     session_start();
-    $_SESSION["AutoreCercato"] = $line["username"];
+    $username = $line["username"];
     echo "Cercavi questo?
-    <a href = ../profilo/profilogenerico.php >".$line["username"]."</a>";
+    <a href = ../profilo/profilogenerico.php?autore=$username>".$line["username"]."</a>";
    }
 
     pg_close($dbconn); 

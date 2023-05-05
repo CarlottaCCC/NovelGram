@@ -24,6 +24,10 @@ $trama = $_GET['trama'];
   <small id='fileHelp' class='form-text text-muted'>Ricorda formato Txt!</small>
       <button type="submit" class="btn btn-primary">Invia!</button>
   </form>
+  <br>
+  <br>
+  <?php echo "<a href='EliminaStoria/EliminaStoria.php?titolo=$titolo' class='btn btn-primary my-2' style='color:black'>Elimina Storia</a>"; ?>
+
 
     
 </body>

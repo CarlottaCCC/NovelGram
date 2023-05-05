@@ -64,14 +64,7 @@
             <div class="row">
                 <div class="col-xl-9 mx-auto">
                     <h1><?php echo "Pagina profilo di ".$autore; ?></h1>
-                    <form action=""> 
-                   <select name="descrizione" onchange="showDescrizione(this.value)">
-                   <option value="">Descrizione:</option>
-                   <?php echo "<option value=$autore>Mostra</option>"; ?>
-                   </select>
-                   </form>
                     <br>
-                   <div id="txtHint">zona descrizione</div>
                 </div>
             </div>
         </div>

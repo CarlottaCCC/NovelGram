@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="../style.css">
 
     <title>Pagina Profilo</title>
+
+
+  
   </head>
   <body>
 
@@ -51,17 +54,12 @@
             <div class="row">
                 <div class="col-xl-9 mx-auto">
                     <h1><?php echo "Pagina profilo di ".$_SESSION["username"]; ?></h1>
-                    <form action=""> 
-                   <select name="descrizione" onchange="showDescrizione(this.value)">
-                   <option value="">Descrizione:</option>
-                   <?php echo "<option value=$username>Mostra</option>"; ?>
-                   </select>
-                   </form>
-                    <br>
-                   <div id="txtHint">zona descrizione</div>
+
                 </div>
             </div>
         </div>
+
+              
        <br>
 
        <br>
@@ -132,6 +130,8 @@
         </br>
 
         <?php echo "<a href = 'Disconnetti.php?email=$mail' style = 'color:black'>Disconnetti profilo</a>"; ?>
+        <br>
+        <?php echo "<a href='EliminaProfilo/EliminaProfilo.php?email=$mail' class='btn btn-primary my-2' style='color:black'>Elimina Profilo</a>"; ?>
 
          <?php endif; ?>
 
@@ -143,30 +143,13 @@
 
       </header>
 
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="jquery-3.6.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!--<script src="jquery-3.6.4.min.js"></script> -->
+
     
 
-    <script>
-function showDescrizione(str) {
-  var xhttp;    
-  if (str == "") {
-    document.getElementById("txtHint").innerHTML = "";
-    return;
-  }
-  xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("txtHint").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("GET", "descrizione.php?username="+str, true);
-  xhttp.send();
-}
-</script>
 
         </body>
         </html>
