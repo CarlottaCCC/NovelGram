@@ -29,10 +29,10 @@
 if($result) {
     $line = pg_fetch_array($result);
     $mipiace= $line['mipiace'];
-echo"Hey bello sono $mipiace mipiace hai capito? :D";
+echo"La Storia $titolo presenta $mipiace mipiace ";
 }
 else {
-    echo"Hey bello sono $mipiace mipiace hai capito? :D";
+    echo"La Storia $titolo presenta $mipiace mipiace ";
 }
 
 
