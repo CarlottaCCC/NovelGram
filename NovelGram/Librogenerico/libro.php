@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <title>Libro</title>
+
+
     
+
 </head>
 <body>
+<script src="../jquery-3.6.4.min.js"> </script>
     <a href="../home.php">Torna alla Home</a>
     <a href="../profilo/paginaprofilo.php">Torna al profilo</a>
 
@@ -63,12 +67,12 @@ if (isset($_SESSION['email'])) {
 
 <br>
 
-<?php echo "<button name='mipiace' value = $titolo onclick='MiPiace(this.value)'>Mi Piace!</button>"; ?>
+<?php echo "<button name='mipiace' id=butmipiace value = $titolo '>Mi Piace!</button>"; ?>
                     <br>
                    <div id="txtHint"></div>
                    
 
-<?php echo "<button name='mostraMiPiace' value =$titolo onclick='MostraMiPiace(this.value)'>Mostra i mi piace</button>"; ?>
+<?php echo "<button name='mostraMiPiace' id=butmostra value =$titolo '>Mostra i mi piace</button>"; ?>
     <br>
     <div id="zonaMiPiace"></div>
 
@@ -80,33 +84,26 @@ if (isset($_SESSION['email'])) {
 ?>
 
 
-
 <script>
-    function MiPiace(str){
-        
-        var xhttp; 
-        xhttp = new XMLHttpRequest();
-       xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("txtHint").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("GET", "mipiace.php?titolo="+str, true);
-  xhttp.send();
-    }
+$(document).ready(function(){
+    $("#butmipiace").click(function(){
+      alert("SHAKA SHAKA SHAKA SHAKA UH UH");
+        $.ajax({url: "mipiace.php?titolo="+$("#butmipiace").val() , success: function(result){
+          $("#txtHint").html(result);
+        }});
+      });
+   
+    
+  
 
-    function MostraMiPiace(str){
-        
-        var xhttp; 
-        xhttp = new XMLHttpRequest();
-       xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("zonaMiPiace").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("GET", "mostramipiace.php?titolo="+str, true);
-  xhttp.send();
-    }
+  $("#butmostra").click(function(){
+      alert("SHAKA SHAKA SHAKA SHAKA UH UH");
+        $.ajax({url: "mostramipiace.php?titolo="+$("#butmostra").val() , success: function(result){
+          $("#zonaMiPiace").html(result);
+        }});
+      });
+    });
+
 
 
 </script>
