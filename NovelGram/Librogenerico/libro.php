@@ -87,7 +87,6 @@ if (isset($_SESSION['email'])) {
 <script>
 $(document).ready(function(){
     $("#butmipiace").click(function(){
-      alert("SHAKA SHAKA SHAKA SHAKA UH UH");
         $.ajax({url: "mipiace.php?titolo="+$("#butmipiace").val() , success: function(result){
           $("#txtHint").html(result);
         }});
@@ -97,7 +96,6 @@ $(document).ready(function(){
   
 
   $("#butmostra").click(function(){
-      alert("SHAKA SHAKA SHAKA SHAKA UH UH");
         $.ajax({url: "mostramipiace.php?titolo="+$("#butmostra").val() , success: function(result){
           $("#zonaMiPiace").html(result);
         }});
